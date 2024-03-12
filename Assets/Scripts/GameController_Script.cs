@@ -39,7 +39,10 @@ public class GameController_Script : MonoBehaviour
         {
             for (int row = 0; row < numRows; row++)
             {
-                Instantiate(redAlienPrefab, new Vector3((-horizontalSpan / 2) + col, 6 - row, 0), Quaternion.identity);
+                if(level % 0 == 1)
+                    Instantiate(redAlienPrefab, new Vector3((-horizontalSpan / 2) + col, 6 - row, 0), Quaternion.identity);
+                else
+                    Instantiate(greenAlienPrefab, new Vector3((-horizontalSpan / 2) + col, 6 - row, 0), Quaternion.identity);
                 alienCount++;
             }
         }
@@ -49,15 +52,10 @@ public class GameController_Script : MonoBehaviour
         score += points;
         alienCount--;
         scoreTextField.text = score.ToString();
-        StartCoroutine(ExampleCoroutine());
         if (alienCount == 0)
         {
             level++;
             LoadAliens();
         }
-    }
-    IEnumerator ExampleCoroutine()
-    {
-        yield return new WaitForSeconds(5);
     }
 }

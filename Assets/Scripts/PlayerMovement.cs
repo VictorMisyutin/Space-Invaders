@@ -51,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Enemy")
-            Destroy(gameObject);
+            PlayerLost();
+    }
+
+    void PlayerLost()
+    {
+        Destroy(gameObject);
+        // display end game screen
     }
 }
