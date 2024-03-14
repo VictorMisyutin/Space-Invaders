@@ -58,5 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Destroy(gameObject);
         // display end game screen
+        GameController_Script.PlayerLost();
+
     }
 }

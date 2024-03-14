@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class GameController_Script : MonoBehaviour
 {
     public GameObject playerPrefab;
@@ -39,7 +39,7 @@ public class GameController_Script : MonoBehaviour
         {
             for (int row = 0; row < numRows; row++)
             {
-                if(level % 0 == 1)
+                if(level % 2 == 0)
                     Instantiate(redAlienPrefab, new Vector3((-horizontalSpan / 2) + col, 6 - row, 0), Quaternion.identity);
                 else
                     Instantiate(greenAlienPrefab, new Vector3((-horizontalSpan / 2) + col, 6 - row, 0), Quaternion.identity);
@@ -57,5 +57,10 @@ public class GameController_Script : MonoBehaviour
             level++;
             LoadAliens();
         }
+    }
+    
+    public static void PlayerLost()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
